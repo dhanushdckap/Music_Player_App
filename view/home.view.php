@@ -48,7 +48,7 @@
                     <div class="ml-4 flex items-center md:ml-6">
 
 
-                        <!-- Log in -->
+
                         <?php if (isset($_SESSION['name'])) :?>
                             <form action="/logout" method="post" enctype="multipart/form-data">
                                 <button type="submit"
@@ -88,7 +88,7 @@
             </div>
         </header>
         <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
-            <!-- Your content -->
+            
         </div>
     </main>
 </div>

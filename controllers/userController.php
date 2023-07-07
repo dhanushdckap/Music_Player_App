@@ -21,6 +21,7 @@ class Controller {
             $checked= $this->model->login_info($data);
             if ($checked){
                 $_SESSION['name']=$checked->username;
+                $this->model->email_sending($data);
                 $this->home();
             }
             else{
@@ -41,11 +42,9 @@ class Controller {
     }
 
 
-    public function add_music($data,$musicImage){
-        if ($data and $musicImage){
-            var_dump($data);
-            var_dump($musicImage);
-            $this->model->add_music($data,$musicImage);
+    public function add_music($data,$music_image){
+        if ($data and $music_image){
+            $this->model->add_music($data,$music_image);
         }
         else{
             $artistname =$this->model->showArtist();
@@ -55,10 +54,9 @@ class Controller {
     }
 
 
-    public function Add_Artist($image,$artist){
-        dieAndDump($artist);
+    public function Add_Artist($artist,$image){
         if ($image and $artist ){
-            $this->model->Add_Artist($image,$artist);
+            $this->model->Add_Artist($artist,$image);
             $this->home();
 
         }
