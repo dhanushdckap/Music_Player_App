@@ -1,3 +1,7 @@
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -107,48 +111,64 @@
     <main>
         <header class="bg-white shadow">
             <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-                <h1 class="text-3xl font-bold tracking-tight text-gray-900">Home
+                <h1 class="text-3xl font-bold tracking-tight text-gray-900">Add Artist
                 </h1>
 
             </div>
         </header>
-        <div class="ml-20 mt-5">
-            <?php if (isset($_SESSION['admin'])) :?>
-                <p>Welcome  back <?php echo $_SESSION['admin']?> !!!</p>
-            <?php endif; ?>
-        </div>
-        <div class="inline-flex rounded-md shadow-sm ml-20 mt-10" role="group">
-            <form action="/music_list" method="post">
-                <button class="px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-l-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white"
-                        aria-current="page">All Music</button>
-            </form>
-            <form action="/artist_list" method="post" >
-                <button class="px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-r-md hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white"
-                        aria-current="page">All Artist</button>
-            </form>
-            </form>
-        </div>
-        <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
-            <!-- Your content -->
+        <form action="/add_artist" method="post" enctype="multipart/form-data">
+            <div class="space-y-12">
+                <div class="border-b border-gray-900/10 pb-8">
+                    <div class="mt-3 grid grid-cols-1 gap-x-5 gap-y-5 sm:grid-cols-4 ml-20">
 
-            <br>
-            <div style="display: flex">
-                <?php foreach ($album as $album_name) :?>
-                    <form action="/album_description" method="post">
-                        <button name="projectId" class="text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-500 dark:focus:ring-blue-800" type ="submit" value="<?php $album_name['id']->id?>"><?php echo $album_name['album_name']?></button>
-                    </form>
-                <?php endforeach;?>
+                        <div class="sm:col-span-4">
+                            <label for="artistName" class="block text-sm font-medium leading-6 text-gray-900">Artist
+                                Name</label>
+                            <div class="mt-2">
+                                <div
+                                        class="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
+                                    <input type="text" name="artistName" id="artistName" autocomplete="username"
+                                           class="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
+                                           placeholder="  Ex:your favorite Artists">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-span">
+                            <label for="song-photo" class="block text-sm font-medium leading-6 text-gray-900">artist photo
+                                photo</label>
+                            <input type="file" name ="artist[]" class="block w-full text-sm mt-5 text-gray-900 border border-white-300 rounded-lg cursor-pointer bg-white-50 dark:text-white-400 focus:outline-none dark:bg-white-700 dark:border-white-600 dark:placeholder-white-400" multiple>
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="bg-blue-500 ml-20 hover:bg-blue-700 text-whitefont-bold py-2 px-4 rounded">
+                    add Artist</button>
+
+
             </div>
-            <div style="display: flex">
-                <?php foreach ($artist as $artistname): ?>
-                    <form action="/artist_description" method="post">
-                        <button name="projectId" class="text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-500 dark:focus:ring-blue-800" type ="submit" value="<?php echo $artistname->id?>"><?php echo $artistname->artist_name?></button>
-                    </form>
-                <?php endforeach; ?>
-            </div>
-        </div>
+
+
+        </form>
     </main>
 </div>
+
+
+</body>
+
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+
+    <title>AddArtist</title>
+</head>
+
+<body>
+
+
 
 
 </body>
